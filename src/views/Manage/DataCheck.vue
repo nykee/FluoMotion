@@ -5,15 +5,19 @@
       <h4 class="func-title">病例数据查看</h4>
       <el-table
         :data="tableData"
-        stripe
         border
         style="width: 100%"
+        :row-class-name="tableRowClassName"
         :default-sort = "{prop: 'date', order: 'descending'}">
         <el-table-column
           prop="date"
           label="上传日期"
           width="180"
           sortable>
+          <template slot-scope="scope">
+            <el-icon name="time"></el-icon>
+            <span style="margin-left: 10px">{{ scope.row.date }}</span>
+          </template>
         </el-table-column>
         <el-table-column
           prop="name"
@@ -36,7 +40,17 @@
         <el-table-column
           prop="status"
           label="状态"
-          width="180" :class="cursor">
+          width="180" class-name="tableRowClassName"
+        sortable>
+
+        </el-table-column>
+        <el-table-column label="操作" >
+          <template slot-scope="scope">
+            <el-button
+                    type="primary"
+                    size="small"
+                    @click="">查看</el-button>
+          </template>
         </el-table-column>
       </el-table>
     </div>
@@ -56,31 +70,48 @@
                 name: '王小虎',
                 dType:"ACL术前",
                 sType:"术后",
-                status:"上传完成"
+                status:"上传完成",
+                    rowClassName:'complete-row'
               },
                 {
                 date: '2016-05-04',
                 name: '王小虎1',
                   dType:"关节炎",
                 sType:"术前",
-                status:"处理中..."
+                status:"处理中...",
+                    rowClassName:'process-row'
               }, {
                 date: '2016-05-01',
                 name: '王小虎2',
                   dType:"ACL术后",
                 sType:"术后",
-                status:"上传完成"
+                status:"上传完成",
+                      rowClassName:'complete-row'
               }, {
                 date: '2016-05-03',
                 name: '王小虎3',
                   dType:"ACL术前",
                 sType:"术后",
-                status:"上传失败"
+                status:"上传失败",
+                      rowClassName:'fail-row'
               }],
               loading:true
             }
         },
-        methods: {},
+        methods: {
+//            tableRowClassName(){
+//                return this.tableData.rowClassName;
+//            }
+            tableRowClassName(row, index) {
+                /*if (index === 1) {
+                    return 'fail-row';
+                } else if (index === 3) {
+                    return 'complete-row';
+                }
+                return '';*/
+                return this.tableData[index].rowClassName;
+            }
+        },
         created: function () {
 
         },
@@ -104,8 +135,17 @@
   .func-title{
     margin-bottom:16px;
   }
-  .cursor{
-    cursor: pointer;
+  .el-table .complete-row{
+    /*background: green;*/
+    color:#13ce66;
+  }
+  .el-table .fail-row{
+    /*background: #ff4949;*/
+    color:#ff4949;
+  }
+  .el-table .process-row{
+    /*background: #58b7ff;*/
+    color:#58b7ff;
   }
 
 </style>
