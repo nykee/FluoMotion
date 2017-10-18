@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import Router from 'vue-router'
 import Index from '../views/Index.vue'
 import Help from '../views/Help/Help.vue'
 import Account from '../views/Help/Account.vue'
@@ -15,6 +13,7 @@ import DataDownload from '../views/Manage/DataDownload.vue'
 import Login from '../views/Login.vue';
 import PageNotFound from '../views/404.vue'
 import Home from '../views/Home.vue'
+import DataStatus from '../views/Manage/DataStatus.vue'
 
 
 
@@ -116,6 +115,11 @@ let routes = [
           path:"/DataCheck",
           name:"DataCheck",
           component:DataCheck
+        },
+        {
+          path:"/DataStatus",
+          name:"DataStatus",
+          component:DataStatus
         }
       ]
     },

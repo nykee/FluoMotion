@@ -14,7 +14,7 @@
           label="上传日期"
           width="180"
           sortable>
-          <template slot-scope="scope">
+          <template scope="scope">
             <el-icon name="time"></el-icon>
             <span style="margin-left: 10px">{{ scope.row.date }}</span>
           </template>
@@ -45,11 +45,11 @@
 
         </el-table-column>
         <el-table-column label="操作" >
-          <template slot-scope="scope">
+          <template scope="scope">
             <el-button
                     type="primary"
                     size="small"
-                    @click="">查看</el-button>
+                    @click="checkStatus">查看</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -60,7 +60,8 @@
 </template>
 
 <script>
-  import  Loading from '../../components/Loading.vue'
+  import  Loading from '../../components/Loading.vue';
+  import eventBus from '../../store/eventBus.js'
     export default {
         data() {
             return {
@@ -110,7 +111,11 @@
                 }
                 return '';*/
                 return this.tableData[index].rowClassName;
-            }
+            },
+          checkStatus(){
+              eventBus.$emit('checkStatus');
+              this.$router.push('/DataStatus')
+          }
         },
         created: function () {
 

@@ -39,7 +39,7 @@
             <el-col :span="8"><el-input type="textarea" v-model="pForm.desc"></el-input></el-col>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="patientInfoHandler">保存</el-button>
+            <el-button type="primary" @click="patientInfoHandler">下一步</el-button>
           </el-form-item>
         </el-form>
 
@@ -61,7 +61,7 @@
             </el-col>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="fbLocationHandler">保存</el-button>
+            <el-button type="primary" @click="fbLocationHandler">下一步</el-button>
           </el-form-item>
         </el-form>
 

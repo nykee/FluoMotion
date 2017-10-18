@@ -69,6 +69,8 @@
           eventBus.$on('accountMenuClick',()=>{
             this.menus=[{name:'帮助'},{name:'账户信息'}];
 
+          }).$on('checkStatus',()=>{
+            this.menus=[{name:'数据管理'},{name:'病例数据查看'},{name:'数据状态查看'}];
           })
 
 
