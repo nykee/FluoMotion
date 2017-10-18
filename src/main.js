@@ -7,6 +7,7 @@ import routes from './router/routes.js'
 import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
 
+
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(VueRouter);

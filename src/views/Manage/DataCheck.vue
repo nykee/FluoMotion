@@ -3,6 +3,11 @@
 
     <div class="content" v-show="!loading">
       <h4 class="func-title">病例数据查看</h4>
+      <el-row type="flex" justify="end" class="search-container">
+        <el-col  :span="5">
+          <span>搜索</span><input v-model="searchKW" @keyup="searchKeyWord" placeholder="请输入搜索内容"/>
+        </el-col>
+      </el-row>
       <el-table
         :data="tableData"
         border
@@ -53,9 +58,19 @@
           </template>
         </el-table-column>
       </el-table>
+      <el-row  class="pagination-container" >
+        <el-col :span="5" ><span ref="sResult">&nbsp;</span></el-col>
+        <el-col :offset="14" :span="5">
+          <el-pagination
+            page-size="10"
+            layout="total,prev, pager, next"
+            :total="4">
+          </el-pagination>
+        </el-col>
+
+      </el-row>
     </div>
     <Loading v-show="loading"></Loading>
-    <!--<div class="loadingGif-container" v-show="loading"><i class="fa fa-spinner fa-4x fa-spin loadingGif"></i></div>-->
   </div>
 </template>
 
@@ -68,35 +83,39 @@
               tableData: [
                 {
                 date: '2016-05-02',
-                name: '王小虎',
+                name: '张三',
                 dType:"ACL术前",
                 sType:"术后",
                 status:"上传完成",
-                    rowClassName:'complete-row'
-              },
+                rowClassName:'complete-row'
+                },
                 {
                 date: '2016-05-04',
-                name: '王小虎1',
-                  dType:"关节炎",
+                name: '李四',
+                dType:"关节炎",
                 sType:"术前",
                 status:"处理中...",
-                    rowClassName:'process-row'
-              }, {
+                rowClassName:'process-row'
+                },
+                {
                 date: '2016-05-01',
-                name: '王小虎2',
-                  dType:"ACL术后",
+                name: '王五',
+                dType:"ACL术后",
                 sType:"术后",
                 status:"上传完成",
-                      rowClassName:'complete-row'
-              }, {
+                rowClassName:'complete-row'
+                },
+                {
                 date: '2016-05-03',
-                name: '王小虎3',
-                  dType:"ACL术前",
+                name: '赵六',
+                dType:"ACL术前",
                 sType:"术后",
                 status:"上传失败",
-                      rowClassName:'fail-row'
-              }],
-              loading:true
+                rowClassName:'fail-row'
+                }
+              ],
+              loading:true,
+              searchKW:'',
             }
         },
         methods: {
@@ -115,6 +134,13 @@
           checkStatus(){
               eventBus.$emit('checkStatus');
               this.$router.push('/DataStatus')
+          },
+          searchKeyWord(){
+            this.$refs.sResult.innerHTML="搜索到"+2+'条记录';
+            if(this.searchKW ===""){
+              this.$refs.sResult.innerHTML='&nbsp;';
+            }
+//            console.log("serachKeyWord");
           }
         },
         created: function () {
@@ -151,6 +177,9 @@
   .el-table .process-row{
     /*background: #58b7ff;*/
     color:#58b7ff;
+  }
+  .pagination-container{
+    margin-top:15px;
   }
 
 </style>
