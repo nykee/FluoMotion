@@ -12,6 +12,8 @@
         :data="tableData"
         border
         style="width: 100%"
+        ref="elTable"
+        @cell-click="handleCellClick"
         :row-class-name="tableRowClassName"
         :default-sort = "{prop: 'date', order: 'descending'}">
         <el-table-column
@@ -54,7 +56,7 @@
             <el-button
                     type="primary"
                     size="small"
-                    @click="checkStatus">查看</el-button>
+                    >查看</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -76,6 +78,7 @@
 
 <script>
   import  Loading from '../../components/Loading.vue';
+  import { mapMutations } from 'vuex'
   import eventBus from '../../store/eventBus.js'
     export default {
         data() {
@@ -84,6 +87,7 @@
                 {
                 date: '2016-05-02',
                 name: '张三',
+                  pid:'张三20160502',
                 dType:"ACL术前",
                 sType:"术后",
                 status:"上传完成",
@@ -92,6 +96,7 @@
                 {
                 date: '2016-05-04',
                 name: '李四',
+                  pid:'李四20160504',
                 dType:"关节炎",
                 sType:"术前",
                 status:"处理中...",
@@ -100,6 +105,7 @@
                 {
                 date: '2016-05-01',
                 name: '王五',
+                  pid:'王五20160501',
                 dType:"ACL术后",
                 sType:"术后",
                 status:"上传完成",
@@ -108,6 +114,7 @@
                 {
                 date: '2016-05-03',
                 name: '赵六',
+                  pid:'赵六20160503',
                 dType:"ACL术前",
                 sType:"术后",
                 status:"上传失败",
@@ -116,9 +123,11 @@
               ],
               loading:true,
               searchKW:'',
+              pid:''
             }
         },
         methods: {
+          ...mapMutations(['setid']),
 //            tableRowClassName(){
 //                return this.tableData.rowClassName;
 //            }
@@ -129,19 +138,39 @@
                     return 'complete-row';
                 }
                 return '';*/
+//                console.log(this.tableData[index].rowClassName);
                 return this.tableData[index].rowClassName;
             },
-          checkStatus(){
-              eventBus.$emit('checkStatus');
-              this.$router.push('/DataStatus')
+          handleCellClick(row,cell){
+//            console.log(row.pid);
+            if(cell.label!=="操作"){return}
+//            console.log(cell);
+            this.$store.commit('setid',row.pid);
+            this.$router.push('/DataStatus')
+
+//            console.log(this.pid);
+          },
+
+          checkStatus(id){
+//            console.log(id);
+            eventBus.$emit('checkStatus',id);
+//              this.$router.push('/DataStatus')
+
+//            console.log(this.$refs.elTable);
+//              let id = this.$refs.elTable.handleCellClick();
+//              console.log(id);
+//              eventBus.$emit('checkStatus');
+
           },
           searchKeyWord(){
             this.$refs.sResult.innerHTML="搜索到"+2+'条记录';
             if(this.searchKW ===""){
               this.$refs.sResult.innerHTML='&nbsp;';
+
             }
 //            console.log("serachKeyWord");
-          }
+          },
+
         },
         created: function () {
 

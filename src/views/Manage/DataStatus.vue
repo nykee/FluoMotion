@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="timleline-content" v-show="!loading">
-      <h5>TimeLine</h5>
+      <h5>病例<span>{{pid}}</span>TimeLine</h5>
       <ul class="timeline">
         <template v-for="item in items">
           <li class="timeline-item">
@@ -18,78 +18,176 @@
       </ul>
     </div>
     <Loading v-show="loading"></Loading>
+
   </div>
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   import  Loading from '../../components/Loading.vue'
+  import eventBus from '../../store/eventBus.js'
     export default {
         data() {
             return {
               loading:true,
-              items:[
-                {
-                  time:'2017-10-12 17:04:22',
-                  content:'病例数据上传'
-                },
-                {
-                  time:'2017-10-12 18:20:31',
-                  content:'双平面坐标开始建立'
-                },
-                {
-                  time:'2017-10-12 18:22:31',
-                  content:'双平面坐标建立完成'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'骨模型轮廓描绘'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'双平面数据处理开始'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'双平面数据处理中，进度：20%'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'双平面数据处理中，进度：40%'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'双平面数据处理中，进度：60%'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'双平面数据处理中，进度：80%'
-                },
-                {
-                  time:'2017-10-12 18:37:02',
-                  content:'双平面数据处理完成'
-                },
-
-
-              ]
-
-
+              items:[]
             }
         },
-        methods: {},
+        methods: {
+          ...mapMutations(['increment','decrement'])
+        },
         created: function () {
 
         },
         mounted() {
-         /* setTimeout(()=>{
-            this.loading = false;
-          })*/
+          let id =this.$store.state.pid;
+//          console.log(this.$store.state.pid);
+          if(id ==='赵六20160503'){
+            this.items =[
+              {
+                time:'2017-10-12 17:04:22',
+                content:'病例数据上传'
+              },
+              {
+                time:'2017-10-12 18:20:31',
+                content:'双平面坐标开始建立'
+              },
+              {
+                time:'2017-10-12 18:22:31',
+                content:'双平面坐标建立完成'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'骨模型轮廓描绘'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'双平面数据处理开始'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'双平面数据处理中，进度：20%'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'双平面数据处理中，进度：40%'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'双平面数据处理中，进度：60%'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'双平面数据处理中，进度：80%'
+              },
+              {
+                time:'2017-10-12 18:37:02',
+                content:'双平面数据处理完成'
+              },
+            ]
+          }
+          else if(id ==="王五20160501"){
+            this.items =[
+              {
+                time:'2017-10-11 17:04:22',
+                content:'病例数据上传'
+              },
+              {
+                time:'2017-10-11 18:20:31',
+                content:'双平面坐标开始建立'
+              },
+              {
+                time:'2017-10-11 18:22:31',
+                content:'双平面坐标建立完成'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'骨模型轮廓描绘'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'双平面数据处理开始'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'双平面数据处理中，进度：20%'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'双平面数据处理中，进度：40%'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'双平面数据处理中，进度：60%'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'双平面数据处理中，进度：80%'
+              },
+              {
+                time:'2017-10-11 18:37:02',
+                content:'双平面数据处理完成'
+              },
+            ]
 
-          let _this =this;
+          }
+          else{
+            this.items =[
+              {
+                time:'2017-10-10 17:04:22',
+                content:'病例数据上传'
+              },
+              {
+                time:'2017-10-10 18:20:31',
+                content:'双平面坐标开始建立'
+              },
+              {
+                time:'2017-10-10 18:22:31',
+                content:'双平面坐标建立完成'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'骨模型轮廓描绘'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'双平面数据处理开始'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'双平面数据处理中，进度：20%'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'双平面数据处理中，进度：40%'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'双平面数据处理中，进度：60%'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'双平面数据处理中，进度：80%'
+              },
+              {
+                time:'2017-10-10 18:37:02',
+                content:'双平面数据处理完成'
+              },
+            ]
+          }
+          var _this =this;
           setTimeout(function () {
+
             _this.loading =false
-          },1000)
+          },1000);
+
 
         },
+      computed:{
+          pid(){
+            return this.$store.state.pid;
+          }
+      },
         components: {Loading}
     }
 </script>
