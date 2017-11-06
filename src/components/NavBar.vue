@@ -1,23 +1,23 @@
 <template>
 
 
-      <el-row class="nav-bar">
-        <el-col :span="6" class="f-title-container">
+      <Row class="nav-bar">
+        <i-col :span="6" class="f-title-container">
          <span class="f-title" >FluoMotion数字影像分析平台</span>
-        </el-col>
-        <el-col :span="2" :offset="16">
-          <el-dropdown class="dropdown">
-            <span class="el-dropdown-link">
+        </i-col>
+        <i-col :span="2" :offset="16">
+          <Dropdown class="dropdown">
+            <span class="Dropdown-link">
               <span class="user-name">admin</span>
               <img src="../assets/images/u-default.jpg" alt="" class="avatar"/>
             </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item ><router-link to="/Help/Account" ><span @click="handleClick">账户信息</span></router-link> </el-dropdown-item>
-              <el-dropdown-item ><span @click="logout">退出登录</span></el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </el-col>
-      </el-row>
+            <DropdownMenu slot="list">
+              <DropdownItem ><router-link to="/Help/Account" ><span @click="handleClick">账户信息</span></router-link> </DropdownItem>
+              <DropdownItem ><span @click="logout">退出登录</span></DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </i-col>
+      </Row>
 
 
 
@@ -39,14 +39,19 @@
           },
           logout(){
 
-            this.$confirm('确认退出吗?', '提示', {
-              //type: 'warning'
-            }).then(() => {
-              sessionStorage.removeItem('user');
-              this.$router.push('/Login');
-            }).catch(() => {
-
-            });
+            this.$Modal.confirm({
+              title: '退出提示',
+              content: '<p>确认退出吗?</p>',
+              okText:'确定',
+              cancelText:'取消',
+              onOk: () => {
+                sessionStorage.removeItem('user');
+                this.$router.push('/Login');
+              },
+              onCancel: () => {
+                this.$Message.info('Clicked cancel');
+              }
+            })
           }
 
 
@@ -75,7 +80,7 @@
     background: #fff;
 
   }
-  .el-dropdown-link{
+  .Dropdown-link{
     display: inline-block;
     vertical-align: middle;
     height: 40px;

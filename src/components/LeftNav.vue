@@ -1,36 +1,36 @@
 <template>
-  <el-row class="left-nav">
+  <Row class="left-nav">
     <!--<div><h2 class="sys-title">Fluo-motion</h2></div>-->
-    <el-menu :collapse="isCollapse" ref="elmenu" default-active="0" theme="dark" unique-opened @select="handleSelect"  @open="handleOpen">
+    <Menu :collapse="isCollapse" ref="elmenu" active-name="1-2" theme="dark" accordion @on-select="handleSelect"  @open="handleOpen" style="width: auto;background: #324157">
       <div><h2 class="sys-title">Fluo-motion</h2></div>
-      <el-menu-item index="0" @click="closeOthers"><i class="fa fa-desktop fa-lg _icons"></i>首页</el-menu-item>
-      <el-submenu index="1">
+      <MenuItem name="0" @click="closeOthers"><i class="fa fa-desktop fa-lg _icons"></i>首页</MenuItem>
+      <Submenu name="1">
         <template slot="title"><i class="fa fa-upload fa-lg _icons"></i>数据上传</template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">单病例数据上传</el-menu-item>
-          <el-menu-item index="1-2">批量数据上传</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-      <el-submenu index="2">
+        <MenuGroup>
+          <MenuItem name="1-1">单病例数据上传</MenuItem>
+          <MenuItem name="1-2">批量数据上传</MenuItem>
+        </MenuGroup>
+      </Submenu>
+      <Submenu name="2">
         <template slot="title"><i class="fa fa-cogs fa-lg _icons"></i>病例管理</template>
-        <el-menu-item-group>
-          <el-menu-item index="2-1">病例数据查看</el-menu-item>
-          <el-menu-item index="2-2">病例数据文件下载</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-      <el-submenu index="3">
+        <MenuGroup>
+          <MenuItem name="2-1">病例数据查看</MenuItem>
+          <MenuItem name="2-2">病例数据文件下载</MenuItem>
+        </MenuGroup>
+      </Submenu>
+      <Submenu name="3">
         <template slot="title"><i class="fa fa-book fa-lg _icons"></i>帮助</template>
-        <el-menu-item-group>
-          <el-menu-item index="3-1">双平面系统流程</el-menu-item>
-          <el-menu-item index="3-2">双平面文件拍摄注意事项</el-menu-item>
-          <el-menu-item index="3-3">数据上传要求</el-menu-item>
-          <el-menu-item index="3-4">下载文件内容</el-menu-item>
-          <el-menu-item index="3-5">账户信息</el-menu-item>
-          <el-menu-item index="3-6">在线技术支持</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-    </el-menu>
-  </el-row>
+        <MenuGroup>
+          <MenuItem name="3-1">双平面系统流程</MenuItem>
+          <MenuItem name="3-2">双平面文件拍摄注意事项</MenuItem>
+          <MenuItem name="3-3">数据上传要求</MenuItem>
+          <MenuItem name="3-4">下载文件内容</MenuItem>
+          <MenuItem name="3-5">账户信息</MenuItem>
+          <MenuItem name="3-6">在线技术支持</MenuItem>
+        </MenuGroup>
+      </Submenu>
+    </Menu>
+  </Row>
 </template>
 
 <script>
@@ -43,19 +43,30 @@
         },
         methods: {
           closeOthers(){
-            this.$refs.elmenu.closeMenu()
+            this.$refs.elmenu. updateActiveName ();
+            this.$refs.elmenu. updateOpened ();
+            this.$refs.elmenu. updateOpenKeys ("1");
+
+            this.$refs.elmenu.$props.activeName="1";
+            this.$refs.elmenu.$props.openNames=["1"];
+
 
           },
           handleOpen(key, keyPath) {
             console.log(key, keyPath);
             console.log(typeof keyPath);
           },
-          handleSelect(key,keyPath){
+          handleSelect(name){
+            console.log(name);
 //            console.log(key,keyPath);
-            eventBus.$emit('menuclick',key);
+            eventBus.$emit('menuclick',name);
 //            this.$root.$emit('menu-click',key,keyPath);
-            switch (key){
+            switch (name){
               case "0":
+                this.$nextTick(function () {
+                  console.log(this);
+                  this.$refs.elmenu.updateOpened()
+                });
                 this.$router.push( {path: '/Index'});
                     break;
               case "1-1":
@@ -98,9 +109,10 @@
           var _this =this;
           eventBus.$on('accountMenuClick',function () {
 //            console.log("监听到账户点击");
+//            console.log(_this.$refs.elmenu);
             _this.$refs.elmenu.closeMenu();
-            _this.$refs.elmenu.openMenu("3",["3"]);
-           _this.$refs.elmenu.activeIndex ="3-5"
+            _this.$refs.elmenu.openNames=["3-5"];
+           _this.$refs.elmenu.activeName ="3-5"
 //
 
           })

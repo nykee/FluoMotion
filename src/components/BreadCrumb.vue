@@ -1,8 +1,8 @@
 <template>
 
-  <el-breadcrumb separator="/" class="breadcrumb">
-    <el-breadcrumb-item  v-for="menu in menus">{{menu.name}}</el-breadcrumb-item>
-  </el-breadcrumb>
+  <Breadcrumb separator="/" class="breadcrumb">
+    <BreadcrumbItem  v-for="menu in menus" >{{menu.name}}</BreadcrumbItem>
+  </Breadcrumb>
 
 </template>
 

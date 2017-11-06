@@ -1,22 +1,22 @@
 <template>
-  <div>
+  <div class="account-style">
     <div class="title"><h1>账户信息</h1></div>
     <div class="content">
-      <el-row class="row">
-        <el-col :span="4"  class="col">用户名:</el-col><el-col :span="4">{{username}}</el-col>
-      </el-row>
-      <el-row class="row">
-        <el-col :span="4" class="col">公司/机构名称：</el-col><el-col :span="4">{{company}}</el-col>
-      </el-row>
-      <el-row class="row">
-        <el-col :span="4" class="col">免费处理次数剩余：</el-col><el-col :span="4">{{freeProcessCount}}</el-col>
-      </el-row>
-      <el-row class="row">
-        <el-col :span="4" class="col">付费处理次数剩余：</el-col><el-col :span="4">{{payProcessCount}}</el-col>
-      </el-row>
-      <el-row class="row">
-        <el-col :span="4" class="col">总计处理次数：</el-col><el-col :span="4">{{processCount}}</el-col>
-      </el-row>
+      <Row class="row">
+        <i-col :span="4"  class="col">用户名:</i-col><i-col :span="4">{{username}}</i-col>
+      </Row>
+      <Row class="row">
+        <i-col :span="4" class="col">公司/机构名称：</i-col><i-col :span="4">{{company}}</i-col>
+      </Row>
+      <Row class="row">
+        <i-col :span="4" class="col">免费处理次数剩余：</i-col><i-col :span="4">{{freeProcessCount}}</i-col>
+      </Row>
+      <Row class="row">
+        <i-col :span="4" class="col">付费处理次数剩余：</i-col><i-col :span="4">{{payProcessCount}}</i-col>
+      </Row>
+      <Row class="row">
+        <i-col :span="4" class="col">总计处理次数：</i-col><i-col :span="4">{{processCount}}</i-col>
+      </Row>
     </div>
 
   </div>
@@ -56,6 +56,9 @@
   }
   .row{
     margin-top:10px;
+  }
+  .account-style{
+    font-size: 1rem;
   }
 
 </style>

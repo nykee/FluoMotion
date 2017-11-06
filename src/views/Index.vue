@@ -1,149 +1,149 @@
 <template>
 <div >
   <!--上层收藏数量卡及图表-->
-  <el-row :gutter="10">
-    <el-col :xs="24" :sm="6" :md="6" :lg="5">
-      <el-card class="card">
+  <Row :gutter="10">
+    <i-col :xs="24" :sm="6" :md="6" :lg="5">
+      <Card class="card">
         <div class="icons"><i class="fa fa-heart fa-2x"></i></div>
         <div class="desc">
           <div class="title">收藏</div>
           <h2 class="sum">30</h2>
         </div>
-      </el-card>
-      <el-card class="card">
+      </Card>
+      <Card class="card">
         <div class="icons"><i class="fa fa-envelope fa-2x"></i></div>
         <div class="desc">
           <div class="title">消息</div>
           <h2 class="sum">55</h2>
         </div>
-      </el-card >
-    </el-col>
-    <el-col :xs="24" :sm="6" :md="6" :lg="5">
-      <el-card class="card" :xs="24">
+      </Card >
+    </i-col>
+    <i-col :xs="24" :sm="6" :md="6" :lg="5">
+      <Card class="card" :xs="24">
         <div class="icons"><i class="fa fa-tasks fa-2x"></i></div>
         <div class="desc">
           <div class="title">任务</div>
           <h2 class="sum">21</h2>
         </div>
-      </el-card>
-      <el-card class="card" :xs="24">
+      </Card>
+      <Card class="card" :xs="24">
         <div class="icons"><i class="fa fa-cloud fa-2x"></i></div>
         <div class="desc">
           <div class="title">病例数据</div>
           <h2 class="sum">180</h2>
         </div>
-      </el-card>
-    </el-col>
-    <el-col :xs="24" :sm="12" :md="12" :lg="14">
+      </Card>
+    </i-col>
+    <i-col :xs="24" :sm="12" :md="12" :lg="14">
         <!--<pie></pie>-->
       <lineChart></lineChart>
-    </el-col>
-  </el-row>
+    </i-col>
+  </Row>
   <!--下层通知卡、动态卡-->
-  <el-row :gutter="10">
-    <el-col :xs="24" :md="8" :sm="8" :lg="8">
-      <el-card class="card-btm">
+  <Row :gutter="10">
+    <i-col :xs="24" :md="8" :sm="8" :lg="8">
+      <Card class="card-btm">
         <div class="card-top">
           <h3 class="fl">动态</h3>
           <i class="fa fa-refresh  fr"></i>
           <span class="clearfix"></span>
         </div>
         <div class="card-content">
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>删除病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span=8><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>下载病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"> <span>编辑病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>上传病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>删除病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span=8><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>下载病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"> <span>编辑病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>上传病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
         </div>
         <div class="card-foot">
           <span class="moreInfo fr"><i class="fa fa-angle-double-right fa-lg "></i>更多</span>
         </div>
-      </el-card>
-    </el-col>
-    <el-col :xs="24" :md="24" :sm="8" :lg="8">
-      <el-card class="card-btm">
+      </Card>
+    </i-col>
+    <i-col :xs="24" :md="24" :sm="8" :lg="8">
+      <Card class="card-btm">
         <div class="card-top">
           <h3 class="fl">通知</h3>
           <i class="fa fa-refresh  fr"></i>
           <span class="clearfix"></span>
         </div>
         <div class="card-content">
-          <el-row class="card-content-items">
-            <el-col :span="3"><i class="fa fa-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>病例数据&#45;&#45;张三丰--处理完成</span></el-col>
-            <el-col :span=8><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-circle-o fa-lg fail"></i></el-col>
-            <el-col :span="12"><span>病例数据&#45;&#45;张三丰--上传失败</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"> <span>病例数据&#45;&#45;张三丰--处理完成</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>病例数据&#45;&#45;张三丰--处理完成</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
+          <Row class="card-content-items">
+            <i-col :span="3"><i class="fa fa-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>病例数据&#45;&#45;张三丰--处理完成</span></i-col>
+            <i-col :span=8><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-circle-o fa-lg fail"></i></i-col>
+            <i-col :span="12"><span>病例数据&#45;&#45;张三丰--上传失败</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"> <span>病例数据&#45;&#45;张三丰--处理完成</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>病例数据&#45;&#45;张三丰--处理完成</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
         </div>
         <div class="card-foot">
           <span class="moreInfo fr"><i class="fa fa-angle-double-right fa-lg "></i>更多</span>
         </div>
-      </el-card>
-    </el-col>
-    <el-col :xs="24" :md="24" :sm="8" :lg="8">
-      <el-card class="card-btm">
+      </Card>
+    </i-col>
+    <i-col :xs="24" :md="24" :sm="8" :lg="8">
+      <Card class="card-btm">
         <div class="card-top">
           <h3 class="fl">动态</h3>
           <i class="fa fa-refresh  fr"></i>
           <span class="clearfix"></span>
         </div>
         <div class="card-content">
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>删除病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span=8><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>下载病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"> <span>编辑病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
-          <el-row class="card-content-items">
-            <el-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></el-col>
-            <el-col :span="12"><span>上传病例&#45;&#45;张三丰</span></el-col>
-            <el-col :span="8"><b class="time-tag">2017-9-30 17:30</b></el-col>
-          </el-row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>删除病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span=8><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>下载病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"> <span>编辑病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
+          <Row class="card-content-items">
+            <i-col :span="4"><i class="fa fa-dot-circle-o fa-lg"></i></i-col>
+            <i-col :span="12"><span>上传病例&#45;&#45;张三丰</span></i-col>
+            <i-col :span="8"><b class="time-tag">2017-9-30 17:30</b></i-col>
+          </Row>
         </div>
         <div class="card-foot">
           <span class="moreInfo fr"><i class="fa fa-angle-double-right fa-lg "></i>更多</span>
         </div>
-      </el-card>
-    </el-col>
-  </el-row>
+      </Card>
+    </i-col>
+  </Row>
 
 </div>
 </template>

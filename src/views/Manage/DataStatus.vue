@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="timleline-content" v-show="!loading">
-      <h5>病例<span>{{pid}}</span>TimeLine</h5>
+      <h5 class="timeline-title">病例<span>{{pid}}</span>TimeLine</h5>
       <ul class="timeline">
         <template v-for="item in items">
           <li class="timeline-item">
@@ -196,6 +196,9 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+  .timeline-title{
+    margin-bottom:20px;
   }
   .timeline-item{
     position: relative;

@@ -2,15 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import ElementUI from 'element-ui';
+import iview from 'iview'
+import 'iview/dist/styles/iview.css'
+import locale from 'iview/dist/locale/en-US';
 import routes from './router/routes.js'
-import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
 import store from './store/store'
 
 Vue.config.productionTip = false;
-Vue.use(ElementUI);
 Vue.use(VueRouter);
+Vue.use(iview,{locale});
 
 const router = new VueRouter({
   routes

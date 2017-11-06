@@ -1,15 +1,15 @@
 <template>
-  <el-row class="main-container">
-    <el-col :span="4" class="left-nav-container">
+  <Row class="main-container">
+    <i-col :span="4" class="left-nav-container">
       <LeftNav ></LeftNav>
-    </el-col>
-    <el-col :span="20" class="right-col-container">
+    </i-col>
+    <i-col :span="20" class="right-col-container">
       <NavBar ></NavBar>
       <BreadCrumb></BreadCrumb>
       <router-view class="container"></router-view>
       <FootBar class="foot-bar"></FootBar>
-    </el-col>
-  </el-row>
+    </i-col>
+  </Row>
 </template>
 
 <script>
