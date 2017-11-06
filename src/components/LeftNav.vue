@@ -1,9 +1,9 @@
 <template>
   <Row class="left-nav">
     <!--<div><h2 class="sys-title">Fluo-motion</h2></div>-->
-    <Menu :collapse="isCollapse" ref="elmenu" active-name="1-2" theme="dark" accordion @on-select="handleSelect"  @open="handleOpen" style="width: auto;background: #324157">
+    <Menu :collapse="isCollapse" ref="myMenu" active-name="1-2" theme="dark" accordion @on-select="handleSelect"  @open="handleOpen" style="width: auto;background: #324157">
       <div><h2 class="sys-title">Fluo-motion</h2></div>
-      <MenuItem name="0" @click="closeOthers"><i class="fa fa-desktop fa-lg _icons"></i>首页</MenuItem>
+      <MenuItem name="0"><i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
       <Submenu name="1">
         <template slot="title"><i class="fa fa-upload fa-lg _icons"></i>数据上传</template>
         <MenuGroup>
@@ -38,24 +38,12 @@
     export default {
         data() {
             return {
-              isCollapse:false
+              isCollapse:false,
+              open: [],
+              active: "1-1",
             }
         },
         methods: {
-          closeOthers(){
-            this.$refs.elmenu. updateActiveName ();
-            this.$refs.elmenu. updateOpened ();
-            this.$refs.elmenu. updateOpenKeys ("1");
-
-            this.$refs.elmenu.$props.activeName="1";
-            this.$refs.elmenu.$props.openNames=["1"];
-
-
-          },
-          handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-            console.log(typeof keyPath);
-          },
           handleSelect(name){
             console.log(name);
 //            console.log(key,keyPath);
@@ -63,10 +51,8 @@
 //            this.$root.$emit('menu-click',key,keyPath);
             switch (name){
               case "0":
-                this.$nextTick(function () {
-                  console.log(this);
-                  this.$refs.elmenu.updateOpened()
-                });
+//                console.log(this);
+
                 this.$router.push( {path: '/Index'});
                     break;
               case "1-1":
@@ -106,7 +92,7 @@
           }
         },
         created: function () {
-          var _this =this;
+        /*  var _this =this;
           eventBus.$on('accountMenuClick',function () {
 //            console.log("监听到账户点击");
 //            console.log(_this.$refs.elmenu);
@@ -115,17 +101,25 @@
            _this.$refs.elmenu.activeName ="3-5"
 //
 
-          })
+          })*/
 
         },
         mounted() {
-          /*eventBus.$on('accountMenuClick',function () {
-            console.log(this.$refs.elmenu.props);
-            this.$refs.elmenu.closeMenu();
-            this.$refs.elmenu.openMenu("3-5",["3", "3-5"]);
-            this.$refs.elmenu.setAttribue("default-openeds",["3"])
+          eventBus.$on('accountMenuClick',/*()=>{
+            this.$nextTick(()=>{
+              this.$refs.myMenu.updateOpened();
+              this.$refs.myMenu.updateActiveName();
+            })
 
-          })*/
+          })*/ ()=>{
+            console.log(this);
+            this.open = ["2"];
+            this.active = ["2-2"];
+            this.$refs.myMenu.updateOpened();
+            this.$refs.myMenu.updateActiveName();
+            this.handleSelect(this.active);
+          })
+
 
         },
         components: {}

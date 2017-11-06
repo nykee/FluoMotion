@@ -60,7 +60,7 @@
           </template>
         </Table-column>
       </Table>-->
-      <Table border :columns="columns" :data="tData"></Table>
+      <Table border stripe :columns="columns" :data="tData"></Table>
       <Row  class="pagination-container" >
         <i-col :span="5" ><span ref="sResult">&nbsp;</span></i-col>
         <i-col :offset="14" :span="5">
@@ -126,13 +126,37 @@
                   name: '王小明',
                   dType: "ACL重建",
                   sType: '术前',
-                  status: '上传中'
+                  status: '上传中',
+                  cellClassName: {
+                    status: 'uploading'
+                  }
                 },
                 {
                   name: '王小明1',
                   dType: "ACL重建1",
                   sType: '术前1',
-                  status: '上传中1'
+                  status: '上传中1',
+                  cellClassName: {
+                    status: 'uploading'
+                  }
+                },
+                {
+                  name: '王小明2',
+                  dType: "ACL重建2",
+                  sType: '术前2',
+                  status: '上传完成',
+                  cellClassName: {
+                    status: 'complete'
+                  }
+                },
+                {
+                  name: '王小明3',
+                  dType: "ACL重建3",
+                  sType: '术前3',
+                  status: '上传失败',
+                  cellClassName: {
+                    status: 'fail'
+                  }
                 },
               ],
               loading:true,
@@ -223,6 +247,17 @@
   }
   .pagination-container{
     margin-top:15px;
+  }
+  .ivu-table .uploading {
+    color: #2db7f5;
+
+  }
+  .ivu-table .complete {
+    color: #19BE6B;
+
+  }
+  .ivu-table .fail{
+    color:#ed3f14
   }
 
 </style>
