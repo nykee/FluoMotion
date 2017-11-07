@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Steps :space="150" :active="active" :current="current" class="step-intro">
+    <Steps :space="150"  :current="current" class="step-intro">
       <Step title="步骤 1：病例信息"></Step>
       <Step title="步骤 2：方板位置"></Step>
       <Step title="步骤 3：文件上传"></Step>

@@ -1,9 +1,9 @@
 <template>
   <Row class="left-nav">
     <!--<div><h2 class="sys-title">Fluo-motion</h2></div>-->
-    <Menu :collapse="isCollapse" ref="myMenu" active-name="1-2" theme="dark" accordion @on-select="handleSelect"  @open="handleOpen" style="width: auto;background: #324157">
+    <Menu mode="vertical" ref="myMenu" :active-name="active" theme="dark" accordion @on-select="handleSelect"  :open-names="open" style="width: auto;background: #324157">
       <div><h2 class="sys-title">Fluo-motion</h2></div>
-      <MenuItem name="0"><i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
+      <MenuItem name="0"> <i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
       <Submenu name="1">
         <template slot="title"><i class="fa fa-upload fa-lg _icons"></i>数据上传</template>
         <MenuGroup>
@@ -38,9 +38,8 @@
     export default {
         data() {
             return {
-              isCollapse:false,
               open: [],
-              active: "1-1",
+              active: "0",
             }
         },
         methods: {
@@ -51,7 +50,16 @@
 //            this.$root.$emit('menu-click',key,keyPath);
             switch (name){
               case "0":
+                this.open = ["0"];
+                this.active = "0";
 //                console.log(this);
+                this.$nextTick(()=>{
+
+                  console.log(this.$refs.myMenu);
+                  this.$refs.myMenu.updateOpened();
+                  this.$refs.myMenu.updateOpenKeys(name);
+                  this.$refs.myMenu.updateActiveName();
+                });
 
                 this.$router.push( {path: '/Index'});
                     break;
@@ -92,32 +100,20 @@
           }
         },
         created: function () {
-        /*  var _this =this;
-          eventBus.$on('accountMenuClick',function () {
-//            console.log("监听到账户点击");
-//            console.log(_this.$refs.elmenu);
-            _this.$refs.elmenu.closeMenu();
-            _this.$refs.elmenu.openNames=["3-5"];
-           _this.$refs.elmenu.activeName ="3-5"
-//
-
-          })*/
-
         },
         mounted() {
-          eventBus.$on('accountMenuClick',/*()=>{
+          eventBus.$on('accountMenuClick', ()=>{
+            this.open = ["3"];
+            this.active = "3-5";
             this.$nextTick(()=>{
+             /* console.log(this);*/
+
               this.$refs.myMenu.updateOpened();
               this.$refs.myMenu.updateActiveName();
-            })
-
-          })*/ ()=>{
-            console.log(this);
-            this.open = ["2"];
-            this.active = ["2-2"];
-            this.$refs.myMenu.updateOpened();
-            this.$refs.myMenu.updateActiveName();
+//              this.handleSelect(this.active);
+            });
             this.handleSelect(this.active);
+
           })
 
 
