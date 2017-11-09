@@ -102,6 +102,8 @@
     margin-bottom:10px;
   }
   .fail{color:#e4393c}
-
+  .card-foot{
+    height: 1.6rem;
+  }
 
 </style>

@@ -1,9 +1,9 @@
 <template>
   <Row class="left-nav">
     <!--<div><h2 class="sys-title">Fluo-motion</h2></div>-->
-    <Menu mode="vertical" ref="myMenu" :active-name="active" theme="dark" accordion @on-select="handleSelect"  :open-names="open" style="width: auto;background: #324157">
+    <Menu mode="vertical" ref="myMenu" :active-name="active" theme="dark" accordion="true"  @on-select="handleSelect"  :open-names="open" style="width: auto;background: #324157">
       <div><h2 class="sys-title">Fluo-motion</h2></div>
-      <MenuItem name="0"> <i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
+      <MenuItem name="8"> <i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
       <Submenu name="1">
         <template slot="title"><i class="fa fa-upload fa-lg _icons"></i>数据上传</template>
         <MenuGroup>
@@ -29,6 +29,7 @@
           <MenuItem name="3-6">在线技术支持</MenuItem>
         </MenuGroup>
       </Submenu>
+
     </Menu>
   </Row>
 </template>
@@ -44,20 +45,20 @@
         },
         methods: {
           handleSelect(name){
-            console.log(name);
+//            console.log(name);
 //            console.log(key,keyPath);
             eventBus.$emit('menuclick',name);
 //            this.$root.$emit('menu-click',key,keyPath);
             switch (name){
               case "0":
-                this.open = ["0"];
+                this.open = [];
                 this.active = "0";
 //                console.log(this);
                 this.$nextTick(()=>{
 
-                  console.log(this.$refs.myMenu);
+//                  console.log(this.$refs.myMenu);
                   this.$refs.myMenu.updateOpened();
-                  this.$refs.myMenu.updateOpenKeys(name);
+//                  this.$refs.myMenu.updateOpenKeys(name);
                   this.$refs.myMenu.updateActiveName();
                 });
 
