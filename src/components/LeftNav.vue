@@ -1,7 +1,7 @@
 <template>
   <Row class="left-nav">
     <!--<div><h2 class="sys-title">Fluo-motion</h2></div>-->
-    <Menu mode="vertical" ref="myMenu" :active-name="active" theme="dark" accordion="true"  @on-select="handleSelect"  :open-names="open" style="width: auto;background: #324157">
+    <Menu mode="vertical" ref="myMenu" :active-name="activeN" theme="dark" accordion="true"  @on-select="handleSelect" @on-open-change ="handleOpenChange"  :open-names="open" style="width: auto;background: #324157">
       <div><h2 class="sys-title">Fluo-motion</h2></div>
       <MenuItem name="8"> <i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
       <Submenu name="1">
@@ -40,7 +40,7 @@
         data() {
             return {
               open: [],
-              active: "0",
+              activeN: "0",
             }
         },
         methods: {
@@ -51,15 +51,15 @@
 //            this.$root.$emit('menu-click',key,keyPath);
             switch (name){
               case "0":
-                this.open = [];
-                this.active = "0";
+                this.open = [''];
+                this.activeN = "0";
 //                console.log(this);
                 this.$nextTick(()=>{
 
 //                  console.log(this.$refs.myMenu);
                   this.$refs.myMenu.updateOpened();
 //                  this.$refs.myMenu.updateOpenKeys(name);
-                  this.$refs.myMenu.updateActiveName();
+                  this.$refs.myMenu.currentActiveName='0';
                 });
 
                 this.$router.push( {path: '/Index'});
@@ -98,6 +98,9 @@
                 this.$router.push( {path: '/Index'});
                 break;
             }
+          },
+          handleOpenChange(name){
+            console.log(name);
           }
         },
         created: function () {
@@ -105,15 +108,15 @@
         mounted() {
           eventBus.$on('accountMenuClick', ()=>{
             this.open = ["3"];
-            this.active = "3-5";
+            this.activeN = "3-5";
             this.$nextTick(()=>{
              /* console.log(this);*/
 
               this.$refs.myMenu.updateOpened();
-              this.$refs.myMenu.updateActiveName();
+              this.$refs.myMenu.currentActiveName='3-5'
 //              this.handleSelect(this.active);
             });
-            this.handleSelect(this.active);
+//            this.handleSelect(this.activeN);
 
           })
 
