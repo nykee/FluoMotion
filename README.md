@@ -7,7 +7,7 @@
   2、文件管理
   3、注意事项
   4、DashBoard
-###基于Vue.js开发，数据可视化使用echarts
+### 基于Vue.js开发，数据可视化使用echarts
 
 ## Build Setup
 
