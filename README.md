@@ -1,6 +1,13 @@
-# fluo-motion
+# nykee-motion
 
-> fluo-motion platform
+> a backend manage platform with function: 1.File uoload 2.DashBoard 3.dataManage Table
+
+## 后台管理系统模板
+  1、文件上传
+  2、文件管理
+  3、注意事项
+  4、DashBoard
+###基于Vue.js开发，数据可视化使用echarts
 
 ## Build Setup
 
