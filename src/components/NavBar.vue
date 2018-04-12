@@ -3,7 +3,7 @@
 
       <Row class="nav-bar">
         <i-col :span="6" class="f-title-container">
-         <span class="f-title" >FluoMotion数字影像分析平台</span>
+         <span class="f-title" >NykeeMotion数字影像分析平台</span>
         </i-col>
         <i-col :span="2" :offset="16">
           <Dropdown class="dropdown">

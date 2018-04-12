@@ -2,7 +2,7 @@
   <Row class="left-nav">
     <!--<div><h2 class="sys-title">Fluo-motion</h2></div>-->
     <Menu mode="vertical" ref="myMenu" :active-name="activeN" theme="dark" accordion="true"  @on-select="handleSelect" @on-open-change ="handleOpenChange"  :open-names="open" style="width: auto;background: #324157">
-      <div><h2 class="sys-title">Fluo-motion</h2></div>
+      <div><h2 class="sys-title">nykee-motion</h2></div>
       <MenuItem name="8"> <i class="fa fa-desktop fa-lg _icons" ></i>首页</MenuItem>
       <Submenu name="1">
         <template slot="title"><i class="fa fa-upload fa-lg _icons"></i>数据上传</template>
